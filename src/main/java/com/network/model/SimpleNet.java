@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import com.network.array.Array;
 
@@ -14,6 +15,8 @@ import com.network.array.Array;
  *
  */
 public class SimpleNet {
+	Logger log = Logger.getLogger("SimpleNet") ;
+	
 	// 第一层的权重
 	private Array w1 ;
 	private Array b1 ;
@@ -108,6 +111,7 @@ public class SimpleNet {
 	
 	// 保存模型 数据格式 input_size|hidden_size|output_size|learningRate|initRate|iters_num|batch_size|w1|b1|w2|b2 
 	public void save(String modelPath) throws Exception {
+		log.info("正在保存。。。");
 		FileWriter write = null ;
 		try {
 			write = new FileWriter(new File(modelPath)) ;
@@ -136,6 +140,7 @@ public class SimpleNet {
 				}
 			}
 		}
+		log.info("保存完成");
 	}
 	
 	// 将数组转string，将数组1，2，3
@@ -224,6 +229,9 @@ public class SimpleNet {
 //				System.out.println(this.w1);
 			}
 		}
+		Array s = predict(xTrain) ; 
+		Array m = predict(xTest) ;
+		System.out.println("训练完成：\r\n\t训练数据准确率："+Array.samePer(s.max(), tTrain.max())+"\r\n\t测试数据准确率："+Array.samePer(m.max(), tTest.max()));
 	}
 	
 	// 预测方法

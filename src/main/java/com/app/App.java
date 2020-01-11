@@ -87,7 +87,7 @@ public class App
     	// 加载训练数据
     	Array[] arr = loadData(0.1) ;
     	// 初始化神经网络
-		SimpleNet net = new SimpleNet(680 , 20 , 36 , 0.2 , 2500 , 200) ;
+		SimpleNet net = new SimpleNet(680 , 20 , 36 , 0.3 , 3000 , 100) ;
 		// 训练神经网络
 		net.fit(arr[0], arr[1] , arr[2] , arr[3]);
 		// 保存模型
@@ -113,6 +113,11 @@ public class App
 			System.out.print("预测结果："+check(result.max()[0]));
 			System.out.println();
 			Thread.sleep(1000);
+			
+			// 将预测错误的打印出来
+//			if(t.max()[0] != result.max()[0]) {
+//				System.out.println(check(t.max()[0])+"\t"+check(result.max()[0])+"\t"+f.getName());
+//			}
 		}
 	}
 }
