@@ -13,4 +13,4 @@
 #### code_data训练数据
 
 #### 开发不易望支持
-<img src="https://raw.githubusercontent.com/wangffei/network/master/imgs/qrcode.png" style="width:20%;" />
+<img src="https://raw.githubusercontent.com/wangffei/network/master/imgs/qrcode.png" width="200" />
