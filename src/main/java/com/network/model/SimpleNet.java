@@ -226,7 +226,7 @@ public class SimpleNet {
 				Array s = predict(xTrain) ; 
 				Array m = predict(xTest) ;
 				System.out.println("训练数据准确率 | 测试数据准确率 "+Array.samePer(s.max(), tTrain.max())+" | "+Array.samePer(m.max(), tTest.max()));
-//				System.out.println(this.w1);
+//				System.out.println(this.w1) ;
 			}
 		}
 		Array s = predict(xTrain) ; 

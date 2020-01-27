@@ -35,7 +35,7 @@ public class App
 	
 	public static Array[] loadData(double split) throws Exception {
 		File file = new File("./code_data/") ;
-		File[] files = file.listFiles() ;
+		File[] files = Array.random.randomArray(file.listFiles()) ;
 		Array train = new Array(680) ;
 		Array target = new Array(36) ;
 		for(File f : files) {
@@ -83,11 +83,11 @@ public class App
 	}
 	
     // 训练模型
-    public static void main1(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
     	// 加载训练数据
     	Array[] arr = loadData(0.1) ;
     	// 初始化神经网络
-		SimpleNet net = new SimpleNet(680 , 20 , 36 , 0.3 , 3000 , 100) ;
+		SimpleNet net = new SimpleNet(680 , 15 , 36 , 0.3 , 3000 , 100) ;
 		// 训练神经网络
 		net.fit(arr[0], arr[1] , arr[2] , arr[3]);
 		// 保存模型
@@ -96,7 +96,7 @@ public class App
 	}
     
     // 加载模型
-    public static void main(String[] args) throws Exception {
+    public static void main1(String[] args) throws Exception {
     	// 加载模型
     	SimpleNet net = SimpleNet.load("./model.json") ;
     	// 从code_data读取数据，进行测试
@@ -112,12 +112,12 @@ public class App
 			Array result = net.predict(x) ;
 			System.out.print("预测结果："+check(result.max()[0]));
 			System.out.println();
-			Thread.sleep(1000);
+			Thread.sleep(100);
 			
 			// 将预测错误的打印出来
-//			if(t.max()[0] != result.max()[0]) {
-//				System.out.println(check(t.max()[0])+"\t"+check(result.max()[0])+"\t"+f.getName());
-//			}
+			if(t.max()[0] != result.max()[0]) {
+				System.out.println(check(t.max()[0])+"\t"+check(result.max()[0])+"\t"+f.getName());
+			}
 		}
 	}
 }

@@ -28,4 +28,16 @@ public class Random{
 		}
 		return set.stream().mapToInt(Number::intValue).toArray() ;
 	}
+
+	//将一个数组完全乱序
+	public static <T>T[] randomArray(T[] arr){
+		int length = arr.length ;
+		for(int i = length-1 ; i >= 0 ; i--){
+			int rand = (int)(Math.random()*i) ;
+			T temp = arr[i] ;
+			arr[i] = arr[rand] ;
+			arr[rand] = temp ;
+		}
+		return arr ;
+	} 
 }
